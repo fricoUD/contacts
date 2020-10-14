@@ -12,7 +12,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.util.*;
 
 public class CSVReader {
-	private static String[] HEADERS = { "Name", "Surname", "Number", "Sex" };
+	private static String[] HEADERS = { "Name", "Surname", "Number", "Sex", "Starred" };
 
 	public static List<HashMap<String, String>> readCsv(String file) throws IOException {
 		List<HashMap<String, String>> rawCsv = new ArrayList<HashMap<String, String>>();
@@ -25,6 +25,7 @@ public class CSVReader {
 			toAdd.put("Surname", record.get("Surname"));
 			toAdd.put("Number", record.get("Number"));
 			toAdd.put("Sex", record.get("Sex"));
+			toAdd.put("Starred", record.get("Starred"));
 			rawCsv.add(toAdd);
 		}
 		return rawCsv;
@@ -35,7 +36,7 @@ public class CSVReader {
 		try (CSVPrinter printer = new CSVPrinter(out, CSVFormat.DEFAULT.withHeader(HEADERS))) {
 			for (UUID i : data.keySet()) {
 				Bean x = data.get(i);
-				printer.printRecord(x.getName(), x.getSurname(), x.getNumber(), x.getSex());
+				printer.printRecord(x.getName(), x.getSurname(), x.getNumber(), x.getSex(), x.getStarred());
 			}
 		}
 	}

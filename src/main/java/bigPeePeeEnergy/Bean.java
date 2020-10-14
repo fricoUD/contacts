@@ -8,15 +8,28 @@ public class Bean {
 	private String surname;
 	private String number;
 	private String sex;
+	private String starred;
 	private UUID uuid = UUID.randomUUID();
 
-	public Bean(String name, String surname, String number, String sex) {
+	public Bean(String name, String surname, String number, String sex, String starred) {
 		this.name = name;
 		this.surname = surname;
 		this.number = number;
 		this.sex = sex;
+		this.starred = starred;
 		this.uuid = UUID.randomUUID();
 	}
+
+
+	public String getStarred() {
+		return starred;
+	}
+
+
+	public void setStarred(String starred) {
+		this.starred = starred;
+	}
+
 
 	public String getName() {
 		return name;

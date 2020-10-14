@@ -21,9 +21,11 @@ public class Main2 extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		String url = this.rubrica.handleRequest(request);
 		ServletContext context = getServletContext();
+		
+		System.out.println("request was made" + url);
 		RequestDispatcher dispatcher = context.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
